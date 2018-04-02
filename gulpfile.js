@@ -2,12 +2,9 @@ var gulp = require('gulp-help')(require('gulp'));
 var del = require('del');
 var rename = require('gulp-rename');
 var zip = require('gulp-zip');
-var modConcat = require('module-concat');
-
 var serverSourceFiles = ['server/**/*'];
 var distSourceFiles = ['dist/**/*'];
 var destinationServer = 'build/server';
-var destination = 'build';
 
 gulp.task('clean', function () {
     return del([
@@ -53,7 +50,7 @@ gulp.task('copy', 'copy root', ['views'], function () {
 });
 gulp.task('zipfolder', 'zip folder', ['copy'], function () {
     return gulp.src('build/**/*')
-        .pipe(zip('welllogdata.zip'))
+        .pipe(zip('welllogwidgetexample.zip'))
         .pipe(gulp.dest('build'));
 });
 gulp.task('default', 'Prepare distribution', ['zipfolder']);
