@@ -1,0 +1,184 @@
+swagger: "2.0"
+info:
+  description: "This is a sample welllog server"
+  version: "1.0.0"
+  title: "WellLogData"
+  contact:
+    email: "support@int.com"
+host: "localhost:3000"
+basePath: "/api/v1"
+tags:
+- name: "curves"
+  description: "Curves API"
+- name: "templates"
+  description: "Templates API"
+schemes:
+- "http"
+paths:
+  /curves:
+    get:
+      tags:
+      - "curves"
+      summary: "Requests a curve list"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Curve"
+        405:
+          description: "Invalid input"
+  /curves/{curveId}:
+    get:
+      tags:
+      - "curves"
+      summary: "Finds Curve Meta data"
+      description: "Return information about curve"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "curveId"
+        in: "path"
+        description: "ID of curve to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Curve"
+        400:
+          description: "Invalid value"
+  /curves/{curveId}/range:
+    get:
+      tags:
+      - "curves"
+      summary: "Return curve min and max value"
+      description: "Return curve min and max value"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "curveId"
+        in: "path"
+        description: "ID of curve to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CurveRange"
+        400:
+          description: "Invalid value"
+  /curves/{curveId}/data:
+    post:
+      tags:
+      - "curves"
+      summary: "Requests curve data"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "curveId"
+        in: "path"
+        description: "ID of curve to return"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Query Infromation"
+        required: true
+        schema:
+          $ref: "#/definitions/Query"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CurveData"
+        405:
+          description: "Invalid input"
+  /temlates/{templateId}:
+    get:
+      tags:
+      - "templates"
+      summary: "Gets template"
+      description: "Return a template"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "templateId"
+        in: "path"
+        description: "ID of template to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+        400:
+          description: "Invalid value"
+  
+definitions:
+  Curve:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      type:
+        type: "string"
+      unit:
+        type: "string"
+  Range:
+    type: "object"
+    properties:
+      min:
+        type: "number"
+      max:
+        type: "number"
+  CurveRange:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      min:
+        type: "number"
+      max:
+        type: "number"
+  CurveData:
+    type: "array"
+    items:
+      type: "number"
+  Query:
+    type: "object"
+    properties:
+      curves:
+        type: "array"
+        description: "Array of curves' names"
+        items:
+          type: "string"
+      range:
+        $ref: "#/definitions/Range"
+      scale:
+        type: "number"
+        description: "Scale"
+      usedecimation:
+        type: "boolean"
+        description: "Apply decimation"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

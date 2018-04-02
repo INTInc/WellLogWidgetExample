@@ -1,0 +1,41 @@
+{
+    "template": {
+        "type": "welllog",
+        "tracks": [
+            {
+                "name": "Track # 1",
+                "type": "index"
+            },
+            {
+                "name": "Track # 2",
+                "type": "linear",
+                "width": 120,
+                "visuals": [
+                    {
+                        "cg_type": "compositecurve",
+                        "name": "GR",
+                        "id": "GR",
+                        "linestyle": { "color": "red" }
+                    }
+                ]
+            },
+            {
+                "name": "Track # 2",
+                "type": "linear",
+                "width": 120,
+                "visuals": [
+                    {
+                        "cg_type": "compositecurve",
+                        "name": "RHOB",
+                        "id": "RHOB",
+                        "linestyle": { "color": "green" }
+                    }
+                ]
+            },
+            {
+                "name": "Track # 3",
+                "type": "index"
+            }
+        ]
+    }
+}

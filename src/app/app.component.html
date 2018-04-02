@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default" role="navigation" style="z-index: 1">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+            data-target="#map-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#" style="line-height: 35px ">INT</a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="map-navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li>
+        <button title="Zoom in" type="button" class="toolbutton" (click)="zoomIn($event)"><span
+          class="glyphicon glyphicon-zoom-in"></span></button>
+      </li>
+      <li>
+        <button  title="Zoom out" type="button" class="toolbutton" (click)="zoomOut($event)"><span
+          class="glyphicon glyphicon-zoom-out"></span></button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="content">
+  <app-welllog-component></app-welllog-component>
+</div>

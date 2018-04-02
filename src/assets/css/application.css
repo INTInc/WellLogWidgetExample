@@ -1,0 +1,103 @@
+div{
+    -webkit-touch-callout: none;
+    -o-user-select: none;
+    -moz-user-select: none;  
+    -moz-user-select: -moz-none;  
+    -webkit-user-select: none;  
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+  }
+  html,body {
+    -webkit-touch-callout: none;
+    -o-user-select: none;
+    -moz-user-select: none;  
+    -moz-user-select: -moz-none;  
+    -webkit-user-select: none;  
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    cursor:default;
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 70px;
+    color: #000;
+    background-color: #FFF;
+    font-size: 0.9em;
+    height:100%;
+    width:100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .content {
+      position:absolute;
+      bottom:0px;
+      top:63px;
+      left:0px;
+      right:0px;
+      border:0px solid black;
+      overflow:hidden;
+  }
+  .plot{
+      -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+      -moz-user-select: none; /* mozilla browsers */
+      -khtml-user-select: none; /* webkit (konqueror) browsers */
+      -ms-user-select: none; /* IE10+ */
+      border:0px solid #000000;
+  }
+  .plothost {
+      position:absolute;
+      bottom:0px;
+      top: 0px;
+      left:0;
+      right:0;
+      border:0 solid black;
+      overflow: hidden;
+  }
+  .toolbutton{
+    box-sizing: content-box;
+    border: 1px solid transparent;
+    width:35px;
+    height:35px;
+    bottom:0px;
+    top:0px;
+    float: left;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding:10px;
+    color: #3372b9;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 19px;
+    margin-right:5px;
+    margin-top: 5px;
+}
+
+.toolbutton:focus {
+    outline: 0;
+}
+
+.toolbutton:hover{
+    color: #2f4050;
+    background-color: #c0c0c0;
+}
+
+.button, select {
+    background-color:transparent;
+    border-color:transparent;
+}
+
+.btn-default:active{
+    background-color:transparent;
+    border-color:transparent;}
+
+.navbar-default {
+    background-color: transparent;
+    background-image: linear-gradient(to bottom,#fff 0,#fff 100%);
+}
+.selected{
+    background-color: #c0c0EE;
+    white-space:nowrap;
+}
+  
