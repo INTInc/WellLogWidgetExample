@@ -69,7 +69,8 @@ export class RemoteDataSource extends geotoolkit.data.DataSource {
         this.dataset = new geotoolkit.data.DataSet();
         this.dataset.on(geotoolkit.data.Events.DataFetching, this.onDataSetDataFetching);
         // Add log data to data set
-        this.dataset.addTable(this.logData, new geotoolkit.util.Range( +range['min'], +range['max']));
+        this.dataset.addTable(this.logData, new geotoolkit.util.Range( +range['min'], +range['max']), 
+        this.logData.getColumn(0));
     }
     private fetchDataSet() {
         // get visible limits range from widget
