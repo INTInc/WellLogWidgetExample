@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AppConfig {
     private static cache = {};
+    private data: {};
     public static loadInstance(jsonFile: string) {
         return new Promise((resolve, reject) => {
 
@@ -12,7 +13,9 @@ export class AppConfig {
             xobj.onreadystatechange = () => {
                 if (xobj.readyState === 4) {
                     if (xobj.status === 200) {
-                        AppConfig.cache[jsonFile] = new AppConfig(JSON.parse(xobj.responseText));
+                        const instance = new AppConfig();
+                        instance.init(JSON.parse(xobj.responseText));
+                        AppConfig.cache[jsonFile] = instance;
                         resolve();
                     } else {
                         reject('Could not load file');
@@ -38,7 +41,7 @@ export class AppConfig {
         }
         return null;
     }
-
-    constructor(private data: any) {
+    private init(data: {}) {
+        this.data = data;
     }
 }
