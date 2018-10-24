@@ -7,7 +7,7 @@ Create a folder called WellLogWidgetExample\src\libs\geotoolkit and copy all fil
 
 ## Node.js server
 
-Run `node server.js` in console.
+Run `node server.js` in console. You need to run ng serve and node server.js together. Use different console instances. 
 
 ## Development server
 
@@ -23,7 +23,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Deployment
 
-Run `ng run distribution` to build distribution of the project. The build artifacts will be stored in the `build/` directory. Use welllogwidgetexample.zip
+Run `npm run distribution` to build distribution of the project. The build artifacts will be stored in the `build/` directory. Use welllogwidgetexample.zip
 
 ## Running unit tests
 
