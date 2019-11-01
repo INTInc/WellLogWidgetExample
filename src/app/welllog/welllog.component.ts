@@ -25,10 +25,10 @@ export class WellLogComponent implements OnInit, AfterViewInit {
     this.resize(event);
   }
   public zoomIn() {
-    this.widget.zoomIn();
+    this.widget.scale(2);
   }
   public zoomOut() {
-    this.widget.zoomOut();
+    this.widget.scale(0.5);
   }
   public setDataSource(dataSource: RemoteDataSource) {
     if (this.dataSource) {

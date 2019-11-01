@@ -22,7 +22,6 @@ if (cluster.isMaster) {
 } else {
     var express = require('express'),
         bodyParser = require('body-parser'),
-        validator = require('express-validator'),
         path = require('path');
 
     // Get our API routes
@@ -40,7 +39,6 @@ if (cluster.isMaster) {
 
     // static content
     app.use(express.static(path.join(__dirname, 'dist')));
-    app.use(validator()); // required for Express-Validator
 
     // Set our api routes
     app.use('/api', api(app));
