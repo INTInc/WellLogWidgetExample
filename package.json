@@ -32,7 +32,6 @@
     "body-parser": "latest",
     "ejs": "latest",
     "express": "latest",
-    "express-validator": "latest",
     "express-winston": "latest",
     "minimatch": "^3.0.4",
     "promise": "latest",
