@@ -34,7 +34,7 @@ export class CurveService {
         return response;
     }
     // private helper methods
-    private getHeaders() {
-        return { headers: new HttpHeaders({ headers: this.requestService.getJsonHeaders() })};
+    private getHeaders(): { headers: HttpHeaders } {
+        return { headers: this.requestService.getJsonHeaders() };
     }
 }

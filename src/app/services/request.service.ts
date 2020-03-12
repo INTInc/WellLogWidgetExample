@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Headers } from '@angular/http';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class RequestService {
     constructor() {
     }       
-    getJsonHeaders(): Headers {
-        let headers = new Headers();
+    getJsonHeaders(): HttpHeaders {
+        let headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
         return headers;
     }
