@@ -23,16 +23,6 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "scripts": [
-              "src/libs/geotoolkit/geotoolkit.adv.js",
-              "src/libs/geotoolkit/geotoolkit.controls.adv.js",
-              "src/libs/geotoolkit/geotoolkit.svg.adv.js",
-              "src/libs/geotoolkit/geotoolkit.data.adv.js",
-              "src/libs/geotoolkit/geotoolkit.pdf.adv.js",
-              "src/libs/geotoolkit/geotoolkit.widgets.adv.js",
-              "src/libs/geotoolkit/geotoolkit.welllog.adv.js",
-              "src/libs/geotoolkit/geotoolkit.welllog.widgets.adv.js"
             ]
           },
           "configurations": {
@@ -85,16 +75,6 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "src/libs/geotoolkit/geotoolkit.adv.js",
-              "src/libs/geotoolkit/geotoolkit.controls.adv.js",
-              "src/libs/geotoolkit/geotoolkit.svg.adv.js",
-              "src/libs/geotoolkit/geotoolkit.data.adv.js",
-              "src/libs/geotoolkit/geotoolkit.pdf.adv.js",
-              "src/libs/geotoolkit/geotoolkit.widgets.adv.js",
-              "src/libs/geotoolkit/geotoolkit.welllog.adv.js",
-              "src/libs/geotoolkit/geotoolkit.welllog.widgets.adv.js"
-            ],
             "styles": [
               "src/styles.css"
             ],

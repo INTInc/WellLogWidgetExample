@@ -22,7 +22,7 @@ export class CurveService {
     }
     public async getCurvesData(curves, range, scale?, useDecimation?) {
         const url = this.config.get('apiEndpoint') + '/api/v1/curves/data';
-        const response = await this.http.post(url, JSON.stringify({
+        const response = await this.http.post(url, {
             'curves': curves,
             'range': {
                 'min': range.getLow(),
@@ -30,7 +30,7 @@ export class CurveService {
             },
             'scale': scale,
             'usedecimation': useDecimation
-        }), this.getHeaders()).toPromise();
+        }, this.getHeaders()).toPromise();
         return response;
     }
     // private helper methods
