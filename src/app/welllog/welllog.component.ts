@@ -1,21 +1,24 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, HostListener, OnInit } from '@angular/core';
-import { TemplateService, CurveService } from '../services/index';
-import { RemoteDataSource } from '../data/index';
+import { Plot } from '@int/geotoolkit/plot/Plot';
+import { WellLogWidget } from '@int/geotoolkit/welllog/widgets/WellLogWidget';
+import { Group } from '@int/geotoolkit/scene/Group';
+import { CssLayout } from '@int/geotoolkit/layout/CssLayout';
+import { ToolsContainer } from '@int/geotoolkit/controls/tools/ToolsContainer';
+import { Component, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { TemplateService, CurveService } from '../services';
+import { RemoteDataSource } from '../data';
 @Component({
   selector: 'app-welllog-component',
   templateUrl: './welllog.component.html',
   styleUrls: ['./welllog.component.css']
 })
-export class WellLogComponent implements OnInit, AfterViewInit {
+export class WellLogComponent implements AfterViewInit {
   @ViewChild('plot') canvas: ElementRef;
   @ViewChild('parent') parent: ElementRef;
-  private plot: geotoolkit.plot.Plot;
-  private widget: geotoolkit.welllog.widgets.WellLogWidget;
+  private plot: Plot;
+  private widget: WellLogWidget;
   private dataSource: RemoteDataSource;
   constructor(private templateService: TemplateService, private curveService: CurveService) {
 
-  }
-  ngOnInit() {
   }
   ngAfterViewInit() {
     this.init();
@@ -32,7 +35,7 @@ export class WellLogComponent implements OnInit, AfterViewInit {
   }
   public setDataSource(dataSource: RemoteDataSource) {
     if (this.dataSource) {
-        this.dataSource.disconnect(this.widget);
+      this.dataSource.disconnect(this.widget);
     }
     dataSource.connect(this.widget);
     this.widget.updateLayout();
@@ -47,15 +50,15 @@ export class WellLogComponent implements OnInit, AfterViewInit {
   private initPlot(welltemplate: object) {
     const widget = this.createWidget(welltemplate);
     widget.setLayoutStyle({ 'left': 0, 'right': 0, 'top': 0, 'bottom': 0 });
-    this.plot = new geotoolkit.plot.Plot({
+    this.plot = new Plot({
       'canvasElement': this.canvas.nativeElement,
-      'root': new geotoolkit.scene.Group({ 'children': [widget] })
+      'root': new Group({ 'children': [widget] })
         .setAutoModelLimitsMode(true)
-        .setLayout(new geotoolkit.layout.CssLayout()),
+        .setLayout(new CssLayout()),
       'autoUpdate': true
     });
     // init tools container to support interactions with widget
-    const toolContainer = new geotoolkit.controls.tools.ToolsContainer(this.plot);
+    const toolContainer = new ToolsContainer(this.plot);
     toolContainer.add(widget.getTool());
     widget.invalidate();
     this.widget = widget;
@@ -64,8 +67,8 @@ export class WellLogComponent implements OnInit, AfterViewInit {
     const dataSource = await RemoteDataSource.create(this.curveService);
     this.setDataSource(dataSource);
   }
-  private createWidget(welltemplate: object): geotoolkit.welllog.widgets.WellLogWidget {
-    const widget = new geotoolkit.welllog.widgets.WellLogWidget({
+  private createWidget(welltemplate: object): WellLogWidget {
+    const widget = new WellLogWidget({
       'horizontalscrollable': false,
       'verticalscrollable': true,
       'trackcontainer': {
