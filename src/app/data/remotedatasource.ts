@@ -5,8 +5,9 @@ import { DataSource } from '@int/geotoolkit/data/DataSource';
 import { DataSet } from '@int/geotoolkit/data/DataSet';
 import { Events } from '@int/geotoolkit/data/Events';
 import { Range } from '@int/geotoolkit/util/Range';
-import { Events as Events__geo__ } from '@int/geotoolkit/welllog/widgets/Events';
+import { Events as WidgetEvents } from '@int/geotoolkit/welllog/widgets/Events';
 import { LogCurveDataSource } from '@int/geotoolkit/welllog/data/LogCurveDataSource';
+import { obfuscate } from '@int/geotoolkit/base';
 import { CurveService } from '../services';
 
 const depthColumnName = 'Depth';
@@ -37,6 +38,7 @@ class CurveBinding extends DataBinding {
     // TODO: We are not allowed to set data = null
   }
 }
+obfuscate(CurveBinding, DataBinding);
 
 export class RemoteDataSource extends DataSource {
   private curveBinding: DataBinding;
@@ -105,12 +107,12 @@ export class RemoteDataSource extends DataSource {
     const dataTable = this.dataset.getTable(0);
     this.curveBinding = this.curveBinding || new CurveBinding(dataTable);
     binding.add(this.curveBinding);
-    widget.on(Events__geo__.VisibleDepthLimitsChanged, this.onWidgetDataUpdated);
+    widget.on(WidgetEvents.VisibleDepthLimitsChanged, this.onWidgetDataUpdated);
     widget.setData(this);
     widget.setDepthLimits(this.dataset.getFullIndexRange().getLow(), this.dataset.getFullIndexRange().getHigh());
   }
   public disconnect(widget) {
-    widget.off(Events__geo__.VisibleDepthLimitsChanged, this.onWidgetDataUpdated);
+    widget.off(WidgetEvents.VisibleDepthLimitsChanged, this.onWidgetDataUpdated);
     const binding = widget.getDataBinding();
     binding.remove(this.curveBinding);
     widget.setData(null);
@@ -154,4 +156,5 @@ export class RemoteDataSource extends DataSource {
       null;
   }
 }
+obfuscate(RemoteDataSource, DataSource);
 
