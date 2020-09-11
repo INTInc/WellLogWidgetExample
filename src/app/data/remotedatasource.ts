@@ -7,7 +7,7 @@ import { Events } from '@int/geotoolkit/data/Events';
 import { Range } from '@int/geotoolkit/util/Range';
 import { Events as WidgetEvents } from '@int/geotoolkit/welllog/widgets/Events';
 import { LogCurveDataSource } from '@int/geotoolkit/welllog/data/LogCurveDataSource';
-import { obfuscate } from '@int/geotoolkit/base';
+import { obfuscate } from '@int/geotoolkit/lib';
 import { CurveService } from '../services';
 
 const depthColumnName = 'Depth';
@@ -38,7 +38,7 @@ class CurveBinding extends DataBinding {
     // TODO: We are not allowed to set data = null
   }
 }
-obfuscate(CurveBinding, DataBinding);
+obfuscate(CurveBinding);
 
 export class RemoteDataSource extends DataSource {
   private curveBinding: DataBinding;
@@ -156,5 +156,5 @@ export class RemoteDataSource extends DataSource {
       null;
   }
 }
-obfuscate(RemoteDataSource, DataSource);
+obfuscate(RemoteDataSource);
 

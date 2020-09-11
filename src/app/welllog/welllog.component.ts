@@ -1,8 +1,5 @@
 import { Plot } from '@int/geotoolkit/plot/Plot';
 import { WellLogWidget } from '@int/geotoolkit/welllog/widgets/WellLogWidget';
-import { Group } from '@int/geotoolkit/scene/Group';
-import { CssLayout } from '@int/geotoolkit/layout/CssLayout';
-import { ToolsContainer } from '@int/geotoolkit/controls/tools/ToolsContainer';
 import { Component, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { TemplateService, CurveService } from '../services';
 import { RemoteDataSource } from '../data';
@@ -52,15 +49,9 @@ export class WellLogComponent implements AfterViewInit {
     widget.setLayoutStyle({ 'left': 0, 'right': 0, 'top': 0, 'bottom': 0 });
     this.plot = new Plot({
       'canvasElement': this.canvas.nativeElement,
-      'root': new Group({ 'children': [widget] })
-        .setAutoModelLimitsMode(true)
-        .setLayout(new CssLayout()),
+      'root': widget,
       'autoUpdate': true
     });
-    // init tools container to support interactions with widget
-    const toolContainer = new ToolsContainer(this.plot);
-    toolContainer.add(widget.getTool());
-    widget.invalidate();
     this.widget = widget;
   }
   private async initData() {
