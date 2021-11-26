@@ -9,6 +9,7 @@ import { Events as WidgetEvents } from '@int/geotoolkit/welllog/widgets/Events';
 import { LogCurveDataSource } from '@int/geotoolkit/welllog/data/LogCurveDataSource';
 import { obfuscate } from '@int/geotoolkit/lib';
 import { CurveService } from '../services';
+import { DataSeries } from '@int/geotoolkit/data/DataSeries';
 
 const depthColumnName = 'Depth';
 const curveMin = [21, 2];
@@ -147,7 +148,7 @@ export class RemoteDataSource extends DataSource {
    */
   public getCurveSource(id) {
     const depths = this.dataset.getIndexColumn(0);
-    const values = this.dataset.getTable(0).getColumnByName(id);
+    const values = this.dataset.getTable(0).getColumnByName(id) as DataSeries;
     return values !== null ? (new LogCurveDataSource({
         'depths': depths,
         'values': values,
