@@ -35,7 +35,7 @@
         "ejs": "latest",
         "express": "latest",
         "express-winston": "latest",
-        "minimatch": "^3.0.4",
+        "minimatch": "^3.0.5",
         "promise": "latest",
         "uuid": "latest",
         "winston": "latest"
