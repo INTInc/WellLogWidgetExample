@@ -7,7 +7,7 @@ export class AppConfig {
     public static loadInstance(jsonFile: string) {
         return new Promise((resolve, reject) => {
 
-            let xobj = new XMLHttpRequest();
+            const xobj = new XMLHttpRequest();
             xobj.overrideMimeType('application/json');
             xobj.open('GET', jsonFile, true);
             xobj.onreadystatechange = () => {
@@ -16,7 +16,7 @@ export class AppConfig {
                         const instance = new AppConfig();
                         instance.init(JSON.parse(xobj.responseText));
                         AppConfig.cache[jsonFile] = instance;
-                        resolve();
+                        resolve(null);
                     } else {
                         reject('Could not load file');
                     }
