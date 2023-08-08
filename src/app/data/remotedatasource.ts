@@ -147,7 +147,7 @@ export class RemoteDataSource extends DataSource {
    * @returns {LogCurveDataSource}
    */
   public getCurveSource(id) {
-    const depths = this.dataset.getIndexColumn(0);
+    const depths = this.dataset.getIndexColumn(0) as DataSeries;
     const values = this.dataset.getTable(0).getColumnByName(id) as DataSeries;
     return values !== null ? (new LogCurveDataSource({
         'depths': depths,
