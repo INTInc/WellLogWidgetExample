@@ -48,9 +48,9 @@ export class WellLogComponent implements AfterViewInit {
     const widget = this.createWidget(welltemplate);
     widget.setLayoutStyle({ 'left': 0, 'right': 0, 'top': 0, 'bottom': 0 });
     this.plot = new Plot({
-      'canvasElement': this.canvas.nativeElement,
+      'canvaselement': this.canvas.nativeElement,
       'root': widget,
-      'autoUpdate': true
+      'autoupdate': true
     });
     this.widget = widget;
   }
