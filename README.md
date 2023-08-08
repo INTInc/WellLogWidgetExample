@@ -1,17 +1,12 @@
 # WellLogWidgetExample
 
-How to display well log data with GeoToolkit.JS. This example requires to have GeoToolkit.JS 2.5. Visit www.int.com, please.
-## How to start 
-
-Create a folder called WellLogWidgetExample\src\libs\geotoolkit and copy all files from the bin folder of GeoToolkit.JS 2.5 installation. 
-
 ## Node.js server
 
-Run `node server.js` in console. You need to run ng serve and node server.js together. Use different console instances. 
+Run `npm run start:server` in console. You need to run `npm start` and `npm run start:server` together. Use different console instances.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
